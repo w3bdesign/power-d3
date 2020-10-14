@@ -1,35 +1,39 @@
 import React from 'react';
+import { useQuery } from '@apollo/client';
 
-import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
-
-import { setContext } from '@apollo/client/link/context';
-
-import CONSUMPTION from './gql/CONSUMPTION';
-
-const authLink = setContext((_, { headers }) => {
-  const token = `${process.env.REACT_APP_TOKEN}`;
-
-  return {
-    headers: {
-      ...headers,
-      authorization: token ? `Bearer ${token}` : '',
-    },
-  };
-});
-
-const httpLink = createHttpLink({
-  uri: `${process.env.REACT_APP_GRAPHQL_URL}`,
-});
-
-const client = new ApolloClient({
-  link: authLink.concat(httpLink),
-  cache: new InMemoryCache(),
-});
-
-client.query({ query: CONSUMPTION }).then((result) => console.log(result));
+import CONSUMPTION_QUERY from './gql/CONSUMPTION_QUERY';
 
 function App() {
-  return <div className="App"></div>;
+  const { loading, error, data } = useQuery(CONSUMPTION_QUERY);
+
+  if (data) {
+    console.log(data.viewer.homes[0].consumption.nodes[0]);
+  }
+
+  return (
+    <div className="App">
+      {loading && <h1>Loading data ...</h1>}
+      {error && <h1>Error loading data ...</h1>}
+
+      {data ? (
+        data.viewer.homes[0].consumption.nodes.map(
+          ({ consumption, cost, unitPrice, consumptionUnit }) => (
+            <div key={cost}>
+              <p>
+                Consumption: {consumption} {consumptionUnit}
+                <br />
+                Cost: {cost} kr
+                <br />
+                Unit price: {unitPrice} kr
+              </p>
+            </div>
+          )
+        )
+      ) : (
+        <h2>No data </h2>
+      )}
+    </div>
+  );
 }
 
 export default App;

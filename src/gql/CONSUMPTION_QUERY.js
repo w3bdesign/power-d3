@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
-const CONSUMPTION = gql`
-  query CONSUMPTION {
+const CONSUMPTION_QUERY = gql`
+  query CONSUMPTION_QUERY {
     viewer {
       homes {
         consumption(resolution: DAILY, last: 100) {
@@ -20,4 +20,4 @@ const CONSUMPTION = gql`
   }
 `;
 
-export default CONSUMPTION;
+export default CONSUMPTION_QUERY;
