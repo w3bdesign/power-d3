@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from 'react';
 
 import * as d3 from 'd3';
 
+// https://medium.com/@jeffbutsch/using-d3-in-react-with-hooks-4a6c61f1d102
+
 function D3Component({ data }) {
   console.log('Props: ');
   //console.log(data.viewer.homes[0].consumption.nodes[0]);
@@ -10,7 +12,7 @@ function D3Component({ data }) {
   const d3Container = useRef(null);
 
   useEffect(() => {
-    if (data) {
+    if (data && d3Container.current) {
       const svg = d3.select(d3Container.current);
 
       // Bind D3 data
