@@ -3,6 +3,8 @@ import { useQuery } from '@apollo/client';
 
 import CONSUMPTION_QUERY from './gql/CONSUMPTION_QUERY';
 
+import D3Component from './components/d3/D3Component';
+
 function App() {
   const { loading, error, data } = useQuery(CONSUMPTION_QUERY);
 
@@ -18,15 +20,18 @@ function App() {
       {data ? (
         data.viewer.homes[0].consumption.nodes.map(
           ({ consumption, cost, unitPrice, consumptionUnit }) => (
-            <div key={cost}>
-              <p>
-                Consumption: {consumption} {consumptionUnit}
-                <br />
-                Cost: {cost} kr
-                <br />
-                Unit price: {unitPrice} kr
-              </p>
-            </div>
+            <>
+              <D3Component data={[1, 2, 3]} />
+              <div key={cost}>
+                <p>
+                  Consumption: {consumption} {consumptionUnit}
+                  <br />
+                  Cost: {cost} kr
+                  <br />
+                  Unit price: {unitPrice} kr
+                </p>
+              </div>
+            </>
           )
         )
       ) : (
