@@ -13,41 +13,26 @@ import {
 const formatDate = (dateString) => {
   const options = { day: 'numeric', month: 'long' };
   return new Date(dateString).toLocaleDateString(undefined, options);
-  //return new Date(dateString).toLocaleDateString('nb-NO', options);
 };
 
-export default function D3Component({ data }) {
-  const consumptionData = data.viewer.homes[0].consumption.nodes;
+export default function D3Component({ tibberData, settibberData }) {
+  console.log(tibberData);
 
-  const formattedDate = consumptionData.map((num) => {
+  const consumptionData = tibberData.viewer.homes[0].consumption.nodes;
+
+  //console.log(consumptionData);
+
+  /*const formattedDate = consumptionData.map((num) => {
     return formatDate(num.to);
-    //console.log(num.to);
-    //return num * 2;
-  });
+  });*/
 
-  console.log(formattedDate);
-
-  /*const formattedForEach = consumptionData.forEach(
-    (test) => {
-      console.log(test);
-      if (test === 'to') {
-        console.log('toooo');
-      }
-    }*/
-
-  //console.log(formatDate(test))
-  //console.log(test)
-  //if(Object.keys(test))
-  //console.log(Object.keys(test))
-
-  /*{
-        if (Object.keys(test) === "to") {
-          console.log('To!');
-        }
-      }*/
-
-  //Object.keys(test) === 'to' && console.log('To!')
-  // );
+  /*const test = consumptionData.forEach((data, index) => {
+    //if(data.to) { }
+    //console.log(index);
+    // console.log(data.to);
+    //consumptionData[index].to = "test";
+    console.log(consumptionData[index].to);
+  });*/
 
   /*useEffect(() => {
     console.log('Render useEffect!');    
@@ -58,7 +43,7 @@ export default function D3Component({ data }) {
 
   return (
     <div className="App">
-      <LineChart width={600} height={600} data={consumptionData}>
+      <LineChart width={1000} height={600} data={consumptionData}>
         <Line type="monotone" dataKey="consumption" stroke="#8884d8" />
         <Line type="monotone" dataKey="cost" stroke="#000" />
 
