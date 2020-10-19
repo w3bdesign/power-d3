@@ -1,4 +1,4 @@
-# D3 with React and GraphQL
+# Recharts with React and GraphQL
 
 Experimenting with D3 to output my power consumption visually with GraphQL. 
 
@@ -7,4 +7,4 @@ Experimenting with D3 to output my power consumption visually with GraphQL.
 - React 
 - Apollo
 - React admin
-- D3
+- Recharts
