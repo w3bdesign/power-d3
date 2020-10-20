@@ -18,6 +18,18 @@ export default function D3Component({ tibberData, settibberData }) {
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
+  const roundValue = ({ active, payload, label }) => {
+    if (active) {
+      return (
+        <div className="custom-tooltip">
+          <p className="label">{`${formatDate(label)}`}</p>
+          <p className="label">{`${Math.floor(payload[0].value)} kWh`}</p>
+          <p className="label">{`${Math.floor(payload[1].value)} KR`}</p>
+        </div>
+      );
+    }
+  };
+
   return (
     <div className="App">
       <LineChart width={1000} height={600} data={consumptionData}>
@@ -26,7 +38,7 @@ export default function D3Component({ tibberData, settibberData }) {
         <CartesianGrid stroke="#ccc" />
         <XAxis dataKey="from" tickFormatter={formatDate} />
         <YAxis />
-        <Tooltip labelFormatter={formatDate}/>
+        <Tooltip content={roundValue} labelFormatter={formatDate} />
         <Legend />
       </LineChart>
     </div>
