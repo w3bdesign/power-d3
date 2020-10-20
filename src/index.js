@@ -1,4 +1,3 @@
-// https://medium.com/@varvara.munday/d3-in-react-a-step-by-step-tutorial-cba33ce000ce
 // https://www.apollographql.com/docs/react/get-started/
 
 import React from 'react';

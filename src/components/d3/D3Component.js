@@ -10,22 +10,13 @@ import {
   Legend,
 } from 'recharts';
 
-const formatDate = (dateString) => {
-  const options = { day: 'numeric', month: 'long' };
-  return new Date(dateString).toLocaleDateString(undefined, options);
-};
-
 export default function D3Component({ tibberData, settibberData }) {
   const consumptionData = tibberData.viewer.homes[0].consumption.nodes;
 
-  const test = consumptionData.forEach((data, index) => {
-    //if(data.to) { }
-    console.log(data);
-    // console.log(data.to);
-    return formatDate(data.to);
-    //console.log(consumptionData[index].to);
-  });
-  console.log(test);
+  const formatDate = (dateString) => {
+    const options = { day: 'numeric', month: 'long' };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
 
   return (
     <div className="App">
@@ -33,9 +24,9 @@ export default function D3Component({ tibberData, settibberData }) {
         <Line type="monotone" dataKey="consumption" stroke="#8884d8" />
         <Line type="monotone" dataKey="cost" stroke="#000" />
         <CartesianGrid stroke="#ccc" />
-        <XAxis dataKey="to" />
+        <XAxis dataKey="from" tickFormatter={formatDate} />
         <YAxis />
-        <Tooltip />
+        <Tooltip labelFormatter={formatDate}/>
         <Legend />
       </LineChart>
     </div>
