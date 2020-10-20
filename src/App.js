@@ -17,8 +17,7 @@ function App() {
   }, [data]);
 
   return (
-    <div className="App">
-      Data ...
+    <>
       {loading && <h1>Loading data ...</h1>}
       {error && <h1>Error loading data ...</h1>}
       {tibberData ? (
@@ -26,7 +25,7 @@ function App() {
       ) : (
         <h2>No data </h2>
       )}
-    </div>
+    </>
   );
 }
 
