@@ -6,7 +6,7 @@
     "@apollo/client": "^3.3.7",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.2.5",
-    "@testing-library/user-event": "^12.1.8",
+    "@testing-library/user-event": "^12.6.3",
     "graphql": "^15.5.0",
     "react": "^16.14.0",
     "react-admin": "^3.12.0",
