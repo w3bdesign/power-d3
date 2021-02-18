@@ -8,3 +8,7 @@ Experimenting with Recharts to output my power consumption visually with GraphQL
 - Apollo
 - React admin
 - Recharts
+
+## TODO
+
+- Replace Recharts with Charts.js
