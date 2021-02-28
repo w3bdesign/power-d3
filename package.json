@@ -9,7 +9,7 @@
     "@testing-library/user-event": "^12.7.3",
     "graphql": "^15.5.0",
     "react": "^16.14.0",
-    "react-admin": "^3.12.5",
+    "react-admin": "^3.13.0",
     "react-dom": "^16.14.0",
     "react-scripts": "4.0.3",
     "recharts": "^2.0.8"
